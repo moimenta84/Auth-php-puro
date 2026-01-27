@@ -1,4 +1,4 @@
-# Práctica 6.3: Sistema de Autenticación Web
+ Sistema de Autenticación Web
 
 Sistema completo de autenticación basado en sesiones para un **miniframework PHP personalizado**, implementando el ciclo completo de registro, login, mantenimiento de sesión y logout.
 
