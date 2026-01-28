@@ -1,11 +1,21 @@
 :8080 {
     root * /app/public/web
     encode gzip
-    php_fastcgi unix//var/run/php/php-fpm.sock
-    file_server
     
-    @notFile {
-        not file
+    # Habilitar PHP
+    php_fastcgi unix//var/run/php/php-fpm.sock
+    
+    # Intentar servir archivos estáticos primero
+    @static {
+        file
     }
-    rewrite @notFile /productos/index.php
+    handle @static {
+        file_server
+    }
+    
+    # Si no es archivo estático, redirigir a index.php
+    handle {
+        rewrite * /productos/index.php
+        php_fastcgi unix//var/run/php/php-fpm.sock
+    }
 }
