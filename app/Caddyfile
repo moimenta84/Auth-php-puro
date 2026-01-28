@@ -1,0 +1,11 @@
+:8080 {
+    root * /app/public/web
+    encode gzip
+    php_fastcgi unix//var/run/php/php-fpm.sock
+    file_server
+    
+    @notFile {
+        not file
+    }
+    rewrite @notFile /productos/index.php
+}
