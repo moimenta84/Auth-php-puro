@@ -49,7 +49,7 @@ class ProductoController
     public function store(ProductoRequest $request): void
     {
         Producto::create($request->validated());
-        redirect('/productos/index.php')->with('success', 'Producto guardado con éxito')->send();
+        redirect('productos/index.php')->with('success', 'Producto guardado con éxito')->send();
     }
 
     public function edit(int $id): void
